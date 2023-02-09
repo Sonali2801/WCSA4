@@ -15,9 +15,9 @@ public class ContextClickMethod {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.get("file:///C:/Users/Dell/Desktop/WCSA4/MultiSelectDropdown.html");
-	WebElement targate = driver.findElement(By.id("menu"));
-	
-	Actions acts = new Actions(driver);
-	acts.contextClick(targate).perform();
+		WebElement targate = driver.findElement(By.id("menu"));
+
+		Actions acts = new Actions(driver);
+		acts.contextClick(targate).perform();
 	}
 }

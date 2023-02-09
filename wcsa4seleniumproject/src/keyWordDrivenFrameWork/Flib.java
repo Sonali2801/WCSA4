@@ -25,48 +25,44 @@ public class Flib {
 		Sheet sheet = wb.getSheet(sheetName);
 		Row row = sheet.getRow(rowCount);
 		Cell cell = row.getCell(cellCount);
-	String data=cell.getStringCellValue();
-	return data;
-	
+		String data = cell.getStringCellValue();
+		return data;
 
 	}
-	
-	//to get Last Rowcount
-	
-	public int rowCount(String excelPath,String sheetPath) throws IOException
-	{
-	FileInputStream fis = new FileInputStream(excelPath);
-	
-	Workbook wb = WorkbookFactory.create(fis);
-	Sheet sheet = wb.getSheet(sheetPath);
-	int rc = sheet.getLastRowNum();
-	return rc;
-}
-	
-	
-	//write Excel Data
-	public void writeExcelData(String excelPath, String sheetName,int rowCount, int cellCount, String data) throws EncryptedDocumentException, IOException
-	{
+
+	// to get Last Rowcount
+
+	public int rowCount(String excelPath, String sheetPath) throws IOException {
+		FileInputStream fis = new FileInputStream(excelPath);
+
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sheet = wb.getSheet(sheetPath);
+		int rc = sheet.getLastRowNum();
+		return rc;
+	}
+
+	// write Excel Data
+	public void writeExcelData(String excelPath, String sheetName, int rowCount, int cellCount, String data)
+			throws EncryptedDocumentException, IOException {
 		FileInputStream fis = new FileInputStream(excelPath);
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet(sheetName);
 		Row row = sheet.getRow(rowCount);
-		//--------------------------------------------------------------------------------------------
+		// --------------------------------------------------------------------------------------------
 		Cell cell = row.createCell(cellCount);
 		cell.setCellValue(data);
-		
+
 		FileOutputStream fos = new FileOutputStream(excelPath);
 		wb.write(fos);
 	}
-	
-	//read the data from property file
-	public String readPropertyData(String propPath,String keyValue) throws IOException
-	{
+
+	// read the data from property file
+	public String readPropertyData(String propPath, String keyValue) throws IOException {
 		FileInputStream fis = new FileInputStream(propPath);
 		Properties prop = new Properties();
 		prop.load(fis);
 		String data = prop.getProperty(keyValue);
 		return data;
 	}
-		
-	}
+
+}
